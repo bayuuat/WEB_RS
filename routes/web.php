@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\pemesananController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,10 @@ Route::get('/pemesanan/{id}', [pemesananController::class, 'pemesanan'])->name('
 Route::post('/pesan/{id}', [pemesananController::class, 'store'])->name('pesan.store');
 
 // Route::resource('pesan', 'pemesananController');
+Route::get('/', function () {
+    return view('pages.home');
+});
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/registered', [RegisterController::class, 'store'])->name('registered');
