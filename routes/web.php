@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\pemesananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [pemesananController::class, 'index']);
+Route::get('/pemesanan/{id}', [pemesananController::class, 'pemesanan'])->name('pemesanan');
+Route::post('/pesan/{id}', [pemesananController::class, 'store'])->name('pesan.store');
+
+// Route::resource('pesan', 'pemesananController');
