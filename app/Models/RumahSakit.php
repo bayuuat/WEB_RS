@@ -23,4 +23,8 @@ class RumahSakit extends Model
     {
         return $this->hasMany(Pemesanan::class, 'rs_id', 'id');
     }
+    public function user()
+    {
+        return $this->hasMany(Pemesanan::class, 'user_asalrs', 'id');
+    }
 }

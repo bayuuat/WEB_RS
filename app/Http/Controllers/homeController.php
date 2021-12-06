@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RumahSakit;
 use Illuminate\Http\Request;
 
 class homeController extends Controller
 {
-   
-
     /**
      * Show the application dashboard.
      *
@@ -16,5 +15,18 @@ class homeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard()
+    {
+        $items = RumahSakit::all();
+        return view('dashboard.admin', [
+            'items' => $items
+        ]);
     }
 }

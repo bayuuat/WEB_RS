@@ -18,7 +18,7 @@ class pemesananController extends Controller
     public function index()
     {
         $items = RumahSakit::all();
-        return view('welcome', [
+        return view('pages.home', [
             'items' => $items
         ]);
     }
@@ -44,7 +44,7 @@ class pemesananController extends Controller
     {
         $item = RumahSakit::findOrFail($id);
 
-        return view('pesan', [
+        return view('pages.pesan', [
             'item' => $item
         ]);
     }

@@ -28,7 +28,7 @@ class User extends Authenticatable
         'user_ttl',
         'user_telp',
         'user_password',
-        
+
     ];
 
     /**
@@ -39,7 +39,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        
+
     ];
 
     /**
@@ -52,4 +52,9 @@ class User extends Authenticatable
     ];
 
     public $timestamps = false;
+
+    public function rumahsakit()
+    {
+        return $this->belongsTo(RumahSakit::class, 'user_asalrs', 'id');
+    }
 }
