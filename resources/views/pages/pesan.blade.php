@@ -16,9 +16,13 @@ Homepage
 </div>
 @endif
 
-<div class="container">
+<div class="container mt-4">
     <form method="POST" action="{{ route('pesan.store', $item->id) }}">
         @csrf
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Rumah Sakit Tujuan</label>
+            <input type="text" class="form-control" value="{{$item->rs_nama}}" readonly>
+        </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Nama Lengkap</label>
             <input type="text" class="form-control" placeholder="" name="pemesanan_nama">
