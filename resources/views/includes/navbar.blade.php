@@ -10,8 +10,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+
+                @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            Welcome back, {{ auth()->user()->user_nama }}
+                        </a>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/dashboard">Dashboard</a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
+                            {{-- <a class="dropdown-item" href="#">Logout</a> --}}
+                        </div>
+                    </li>
+                @else
+
                     <a href="/login" class="nav-link btn btn_warna">Login</a>
+
+                @endauth
                 </li>
             </ul>
         </div>
