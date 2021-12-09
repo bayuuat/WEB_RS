@@ -7,6 +7,7 @@ use App\Http\Requests\PemesananRequest;
 use App\Models\Pemesanan;
 use App\Models\RumahSakit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class pemesananController extends Controller
 {
@@ -17,7 +18,7 @@ class pemesananController extends Controller
      */
     public function index()
     {
-        $items = RumahSakit::all();
+        $items = DB::table('tbl_rs')->where('id', '>', 1)->get();
         return view('pages.home', [
             'items' => $items
         ]);

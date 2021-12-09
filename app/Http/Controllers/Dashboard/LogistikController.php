@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PemesananRequest;
-use App\Http\Requests\RumahSakitRequest;
-use App\Models\Pemesanan;
+use App\Models\Logistik;
 use App\Models\RumahSakit;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class RumahSakitController extends Controller
+class LogistikController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +16,8 @@ class RumahSakitController extends Controller
      */
     public function index()
     {
-        $items = RumahSakit::all();
-        return view('dashboard.rumahsakit.index', [
+        $items = Logistik::with(['rumahsakit'])->get();
+        return view('dashboard.logistik.index', [
             'items' => $items
         ]);
     }
@@ -33,7 +30,10 @@ class RumahSakitController extends Controller
      */
     public function create()
     {
-        return view('dashboard.rumahsakit.create');
+        $item = RumahSakit::all();
+        return view('dashboard.logistik.create', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -42,14 +42,19 @@ class RumahSakitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RumahSakitRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-        $data['rs_kondisi'] = 0;
+        $request->validate([
+            'rs_id' => 'required',
+        ]);
 
-        RumahSakit::create($data);
+        $input = $request->all();
+        $input['alat_kondisi'] = 0;
 
-        return redirect()->route('rs.index');
+        $send = Logistik::create($input);
+        if ($send) {
+            return redirect()->route('logistik.index');
+        }
     }
 
     /**
@@ -71,10 +76,12 @@ class RumahSakitController extends Controller
      */
     public function edit($id)
     {
-        $item = RumahSakit::findOrFail($id);
+        $item = Logistik::findOrFail($id);
+        $rs = RumahSakit::all();
 
-        return view('dashboard.rumahsakit.edit', [
+        return view('dashboard.logistik.edit', [
             'item' => $item,
+            'rs' => $rs,
         ]);
     }
 
@@ -85,14 +92,18 @@ class RumahSakitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RumahSakitRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
+        $request->validate([
+            'rs_id' => 'required',
+        ]);
 
-        $item = User::findOrFail($id);
-        $item->update($data);
+        $input = $request->all();
+        $input['alat_kondisi'] = 0;
 
-        return redirect()->route('rs.index');
+        $item = Logistik::findOrFail($id);
+        $item->update($input);
+        return redirect()->route('logistik.index');
     }
 
     /**
@@ -103,9 +114,9 @@ class RumahSakitController extends Controller
      */
     public function destroy($id)
     {
-        $item = RumahSakit::findOrFail($id);
+        $item = Logistik::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('rs.index');
+        return redirect()->route('logistik.index');
     }
 }

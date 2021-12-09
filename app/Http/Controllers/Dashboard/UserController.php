@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\Pemesanan;
 use App\Models\RumahSakit;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -39,33 +40,22 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function pemesanan($id)
-    {
-        $item = RumahSakit::findOrFail($id);
-
-        return view('pages.pesan', [
-            'item' => $item
-        ]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request, $id)
+    public function store(UserRequest $request)
     {
-        $data = $request->all();
+        $validated = $request->validated();
+        $validated['password'] = Hash::make($request->password);
+        if ($validated['roles'] == 'ADMIN') {
+            $validated['user_asalrs'] = 1;
+        }
 
-        $send = User::create($data);
+        $send = User::create($validated);
         if ($send) {
-            return redirect('/');
+            return redirect()->route('user.index');
         }
     }
 
@@ -88,7 +78,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = User::findOrFail($id);
+        $rs = RumahSakit::all();
+
+        return view('dashboard.user.edit', [
+            'item' => $item,
+            'rs' => $rs,
+        ]);
     }
 
     /**
@@ -98,9 +94,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $validated = $request->validated();
+        $validated['password'] = Hash::make($request->password);
+        if ($validated['roles'] == 'ADMIN') {
+            $validated['user_asalrs'] = 1;
+        }
+
+        $item = User::findOrFail($id);
+        $item->update($validated);
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -111,6 +116,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = User::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('user.index');
     }
 }

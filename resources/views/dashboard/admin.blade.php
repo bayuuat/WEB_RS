@@ -42,7 +42,7 @@ Dashboard
                         </a>
                     </div>
                     <div class="item col-6">
-                        <a href="{{ route('user.index') }}">
+                        <a href="{{ route('logistik.index') }}">
                             <div class="card">
                                 <div class="card-body">
                                     Logistik

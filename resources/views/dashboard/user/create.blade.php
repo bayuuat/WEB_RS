@@ -71,7 +71,11 @@ User
                         value="{{ old('user_kode') }}" />
                 </div>
                 <div class="form-group">
-                    <input type="Password" placeholder="Password" class="form-control" name="user_password" />
+                    <input type="Password" placeholder="Password" class="form-control" name="password" />
+                </div>
+                <div class="form-group">
+                    <input type="Password" placeholder="Confirm Password" class="form-control"
+                        name="password_confirmation" />
                 </div>
                 <div class="form-group">
                     <label for="nama">Image</label>

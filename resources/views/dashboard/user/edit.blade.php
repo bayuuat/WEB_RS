@@ -11,7 +11,7 @@ Homepage
         <div class="card-body">
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Edit Data Aslab {{ $item->nama }}</h1>
+                <h1 class="h3 mb-0 text-gray-800">Edit Data User {{ $item->user_nama }}</h1>
             </div>
 
             @if ($errors->any())
@@ -24,160 +24,59 @@ Homepage
             </div>
             @endif
 
-            <div class="card shadow">
-                <div class="card-body">
-                    <form action="{{ route('aslab.update', $item->id) }}" method="POST" enctype="multipart/form-data">
-                        @method('PUT')
-                        @csrf
-                        <div class="form-group">
-                            <label for="nama">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap"
-                                value="{{ $item->nama }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="nama">Nick</label>
-                            <input type="text" class="form-control" name="nick" placeholder="Nickname"
-                                value="{{ $item->nick }}">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-8">
-                                <label for="nama">Angkatan</label>
-                                <input type="text" class="form-control" name="angkatan" placeholder="Angkatan"
-                                    value="{{ $item->angkatan }}">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="nama">NRP</label>
-                                <input type="text" class="form-control" name="nrp" placeholder="NRP"
-                                    value="{{ $item->nrp }}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="nama">Divisi</label>
-                            <input type="text" class="form-control" name="divisi" placeholder="Divisi"
-                                value="{{ $item->divisi }}">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="nama">Github</label>
-                                <input type="text" class="form-control" name="github" placeholder="Link Github"
-                                    value="{{ $item->github }}">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="nama">Linkedin</label>
-                                <input type="text" class="form-control" name="linkedin" placeholder="Link Linkedin"
-                                    value="{{ $item->linkedin }}">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="nama">Twitter</label>
-                                <input type="text" class="form-control" name="twt" placeholder="Link Twitter"
-                                    value="{{ $item->twt }}">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="nama">Instagram</label>
-                                <input type="text" class="form-control" name="insta" placeholder="Link Instagram"
-                                    value="{{ $item->insta }}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="nama">Description</label>
-                            <input type="text" class="form-control" name="description" placeholder="Description"
-                                value="{{ $item->description }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="nama">Image</label>
-                            <input type="file" class="form-control-file" name="foto" placeholder="Image">
-                        </div>
-                        <button type="submit" class="btn btn-dark warna-merah btn-block">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
-
-@extends('layout.admin')
-
-@section('content')
-<!-- Begin Page Content -->
-<div class="container-fluid">
-
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Edit Data Aslab {{ $item->nama }}</h1>
-    </div>
-
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
-    <div class="card shadow">
-        <div class="card-body">
-            <form action="{{ route('aslab.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('user.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="form-group">
-                    <label for="nama">Nama Lengkap</label>
-                    <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap"
-                        value="{{ $item->nama }}">
+                    <select class="form-control" name="roles">
+                        <option value="{{ $item->roles }}">{{ $item->roles }} - Jangan Diubah</option>
+                        <option value="ADMIN">Admin</option>
+                        <option value="USER">User</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="nama">Nick</label>
-                    <input type="text" class="form-control" name="nick" placeholder="Nickname"
-                        value="{{ $item->nick }}">
+                    <input type="Name" placeholder="Nama Lengkap" class="form-control" name="user_nama"
+                        value="{{ $item->user_nama }}" />
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-8">
-                        <label for="nama">Angkatan</label>
-                        <input type="text" class="form-control" name="angkatan" placeholder="Angkatan"
-                            value="{{ $item->angkatan }}">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="nama">NRP</label>
-                        <input type="text" class="form-control" name="nrp" placeholder="NRP" value="{{ $item->nrp }}">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="nama">Divisi</label>
-                    <input type="text" class="form-control" name="divisi" placeholder="Divisi"
-                        value="{{ $item->divisi }}">
-                </div>
+                <label>Tempat Tanggal Lahir</label>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="nama">Github</label>
-                        <input type="text" class="form-control" name="github" placeholder="Link Github"
-                            value="{{ $item->github }}">
+                        <input type="address" placeholder="Tempat" class="form-control" name="user_tempat"
+                            value="{{ $item->user_tempat }}" />
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="nama">Linkedin</label>
-                        <input type="text" class="form-control" name="linkedin" placeholder="Link Linkedin"
-                            value="{{ $item->linkedin }}">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="nama">Twitter</label>
-                        <input type="text" class="form-control" name="twt" placeholder="Link Twitter"
-                            value="{{ $item->twt }}">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="nama">Instagram</label>
-                        <input type="text" class="form-control" name="insta" placeholder="Link Instagram"
-                            value="{{ $item->insta }}">
+                        <input type="date" placeholder="Birthdate" class="form-control" name="user_ttl"
+                            value="{{ $item->user_ttl }}" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="nama">Description</label>
-                    <input type="text" class="form-control" name="description" placeholder="Description"
-                        value="{{ $item->description }}">
+                    <input type="email" placeholder="Alamat Email" class="form-control" name="user_email"
+                        value="{{ $item->user_email }}" />
+                </div>
+                <div class="form-group">
+                    <input type="number" placeholder="Nomor Telepon" class="form-control" name="user_telp"
+                        value="{{ $item->user_telp }}" />
+                </div>
+                <div class="form-group">
+                    <select name="user_asalrs" required class="form-control">
+                        <option value="{{ $item->rumahsakit->id }}">{{ $item->rumahsakit->rs_nama }} - Jangan Diubah
+                        </option>
+                        @foreach ($rs as $list)
+                        <option value="{{ $list->id }}">{{ $list->rs_nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="id" placeholder="ID" class="form-control" name="user_kode"
+                        value="{{ $item->user_kode }}" />
+                </div>
+                <div class="form-group">
+                    <input type="Password" placeholder="Password" class="form-control" name="password"
+                        value="{{ $item->password }}" />
+                </div>
+                <div class="form-group">
+                    <input type="Password" placeholder="Confirm Password" class="form-control"
+                        name="password_confirmation" value="{{ $item->password }}" />
                 </div>
                 <div class="form-group">
                     <label for="nama">Image</label>
@@ -185,10 +84,8 @@ Homepage
                 </div>
                 <button type="submit" class="btn btn-dark warna-merah btn-block">Simpan</button>
             </form>
+
         </div>
     </div>
-
-
 </div>
-<!-- /.container-fluid -->
 @endsection

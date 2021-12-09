@@ -19,12 +19,18 @@ class RumahSakit extends Model
 
     protected $table = 'tbl_rs';
 
+    public $timestamps = false;
+
     public function pesan()
     {
         return $this->hasMany(Pemesanan::class, 'rs_id', 'id');
     }
     public function user()
     {
-        return $this->hasMany(Pemesanan::class, 'user_asalrs', 'id');
+        return $this->hasMany(User::class, 'user_asalrs', 'id');
+    }
+    public function alat()
+    {
+        return $this->hasMany(Logistik::class, 'rs_id', 'id');
     }
 }

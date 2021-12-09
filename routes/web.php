@@ -33,4 +33,5 @@ Route::prefix('dashboard')
         Route::resource('user', 'UserController');
         Route::resource('rs', 'RumahSakitController');
         Route::resource('pesan', 'PemesananController');
+        Route::resource('logistik', 'LogistikController');
     });
