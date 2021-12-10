@@ -71,14 +71,6 @@ Homepage
                         value="{{ $item->user_kode }}" />
                 </div>
                 <div class="form-group">
-                    <input type="Password" placeholder="Password" class="form-control" name="password"
-                        value="{{ $item->password }}" />
-                </div>
-                <div class="form-group">
-                    <input type="Password" placeholder="Confirm Password" class="form-control"
-                        name="password_confirmation" value="{{ $item->password }}" />
-                </div>
-                <div class="form-group">
                     <label for="nama">Image</label>
                     <input type="file" class="form-control-file" name="foto" placeholder="Image">
                 </div>

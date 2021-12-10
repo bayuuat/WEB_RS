@@ -20,9 +20,9 @@ use App\Http\Controllers\Controller;
 
 Route::get('/', [pemesananController::class, 'index']);
 Route::get('/pemesanan/{id}', [pemesananController::class, 'pemesanan'])->name('pemesanan');
-Route::post('/pesan/{id}', [pemesananController::class, 'store'])->name('pesan.store');
+Route::post('/pesan/{id}', [pemesananController::class, 'store'])->name('pemesanan.store');
 
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -31,6 +31,7 @@ Route::post('/registered', [RegisterController::class, 'store'])->name('register
 
 Route::prefix('dashboard')
     ->namespace('Dashboard')
+    ->middleware('auth')
     ->group(function () {
         Route::get('/', [homeController::class, 'dashboard'])->name('dashboard');
         Route::resource('user', 'UserController');

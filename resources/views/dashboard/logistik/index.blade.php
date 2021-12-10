@@ -9,7 +9,6 @@ Homepage
 <div class="container mt-4">
     <div class="card shadow">
         <div class="card-body">
-
             <a href="{{ route('logistik.create') }}" class="btn btn-sm btn-primary shadow-sm float-right mb-4">
                 <i class="fas fa-plus fa-sm text-white-50 "></i> Tambah Data
             </a>
@@ -21,6 +20,7 @@ Homepage
                             <th scope="col">#</th>
                             <th scope="col">ID Alat</th>
                             <th scope="col">Milik Rumah Sakit</th>
+                            <th scope="col">Kondisi</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -30,6 +30,7 @@ Homepage
                             <th scope="row">1</th>
                             <td>{{$item->id}}</td>
                             <td>{{$item->rumahsakit->rs_nama}}</td>
+                            <td>{{$item->alat_kondisi}}</td>
                             <td>
                                 <a href="{{ route('logistik.edit', $item->id) }}" class="btn btn-info">
                                     <i class="fas fa-pencil-alt"></i>

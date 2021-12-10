@@ -29,4 +29,12 @@ class homeController extends Controller
             'items' => $items
         ]);
     }
+
+    public function dashboardUser()
+    {
+        $items = RumahSakit::all();
+        return view('dashboard.user', [
+            'items' => $items
+        ]);
+    }
 }

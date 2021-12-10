@@ -17,7 +17,7 @@ Homepage
 @endif
 
 <div class="container mt-4">
-    <form method="POST" action="{{ route('pesan.store', $item->id) }}">
+    <form method="POST" action="{{ route('pemesanan.store', $item->id) }}">
         @csrf
         <div class="form-group">
             <label for="exampleFormControlInput1">Rumah Sakit Tujuan</label>

@@ -8,6 +8,7 @@ use App\Models\Pemesanan;
 use App\Models\RumahSakit;
 use App\Models\User;
 use Illuminate\Http\Request;
+use illuminate\support\facades\Auth;
 
 class PemesananController extends Controller
 {
@@ -18,7 +19,15 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        $items = Pemesanan::with(['rumahsakit'])->get();
+        $role = Auth::user()->roles;
+
+        if ($role == 'ADMIN') {
+            $items = Pemesanan::with(['rumahsakit'])->get();
+        } else if ($role == 'USER') {
+            $asalrs = Auth::user()->user_asalrs;
+            $items = Pemesanan::with(['rumahsakit'])->where('rs_id', '=', $asalrs)->get();
+        }
+
         return view('dashboard.pemesanan.index', [
             'items' => $items
         ]);

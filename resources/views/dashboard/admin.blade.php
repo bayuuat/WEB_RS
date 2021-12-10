@@ -21,6 +21,7 @@ Dashboard
                     </div>
                 </div>
             </div>
+            @if (auth()->user()->roles == 'ADMIN')
             <div class="col-9">
                 <div class="row">
                     <div class="item col-6 mb-3">
@@ -61,6 +62,40 @@ Dashboard
                     </div>
                 </div>
             </div>
+            @else
+            <div class="col-9">
+                <div class="row">
+                    <div class="item col-6 mb-3">
+                        <a href="{{ route('user.index') }}">
+                            <div class="card">
+                                <div class="card-body">
+                                    Daftar User
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item col-6">
+                        <a href="{{ route('logistik.index') }}">
+                            <div class="card">
+                                <div class="card-body">
+                                    Logistik Rumah Sakit
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item col-6">
+                        <a href="{{ route('pesan.index') }}">
+                            <div class="card">
+                                <div class="card-body">
+                                    Penerimaan pasien
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endif
+
         </div>
     </div>
 </div>

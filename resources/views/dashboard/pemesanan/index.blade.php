@@ -9,11 +9,6 @@ Homepage
 <div class="container mt-4">
     <div class="card shadow">
         <div class="card-body">
-
-            <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary shadow-sm float-right mb-4">
-                <i class="fas fa-plus fa-sm text-white-50 "></i> Tambah Data
-            </a>
-
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>

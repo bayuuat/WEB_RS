@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Logistik;
 use App\Models\RumahSakit;
 use Illuminate\Http\Request;
+use illuminate\support\facades\Auth;
 
 class LogistikController extends Controller
 {
@@ -16,7 +17,14 @@ class LogistikController extends Controller
      */
     public function index()
     {
-        $items = Logistik::with(['rumahsakit'])->get();
+        $role = Auth::user()->roles;
+
+        if ($role == 'ADMIN') {
+            $items = Logistik::with(['rumahsakit'])->get();
+        } else if ($role == 'USER') {
+            $asalrs = Auth::user()->user_asalrs;
+            $items = Logistik::with(['rumahsakit'])->where('rs_id', '=', $asalrs)->get();
+        }
         return view('dashboard.logistik.index', [
             'items' => $items
         ]);
