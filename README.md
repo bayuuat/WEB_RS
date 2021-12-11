@@ -1,3 +1,14 @@
+## Install Project Locally
+
+Install composer pada link berikut [composer](https://getcomposer.org/download/)
+
+Jalankan pada CLI/CMD
+1. git clone https://github.com/Website-B401/b401website.git
+2. composer install
+3. copy .env.example to .env
+4. php artisan key:generate
+5. php artisan serve
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
