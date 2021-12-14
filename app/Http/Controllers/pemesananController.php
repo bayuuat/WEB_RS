@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PemesananRequest;
+use App\Models\Logistik;
 use App\Models\Pemesanan;
 use App\Models\RumahSakit;
 use Illuminate\Http\Request;
@@ -18,9 +19,13 @@ class pemesananController extends Controller
     public function index()
     {
         $items = RumahSakit::all()->where('id', '>', 1);
+        $alat_tersedia = Logistik::all()->where('alat_kondisi', '=', 0);
+
+        // var_dump($items);
 
         return view('pages.home', [
-            'items' => $items
+            'items' => $items,
+            'alat_siap' => $alat_tersedia
         ]);
     }
 

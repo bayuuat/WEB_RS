@@ -57,6 +57,14 @@ class UserController extends Controller
     {
         $validated = $request->validated();
         $validated['password'] = Hash::make($request->password);
+        if ($request->hasFile('user_foto')) {
+            $validated['user_foto'] = $request->file('user_foto')->store(
+                'image',
+                'public'
+            );
+        } else {
+            $validated['user_foto'] = 'image/default.jpg';
+        }
         if ($validated['roles'] == 'ADMIN') {
             $validated['user_asalrs'] = 1;
         }
@@ -105,6 +113,12 @@ class UserController extends Controller
     public function update(UserRequest $request, $id)
     {
         $validated = $request->validated();
+        if ($request->hasFile('user_foto')) {
+            $validated['user_foto'] = $request->file('user_foto')->store(
+                'image',
+                'public'
+            );
+        }
         if ($validated['roles'] == 'ADMIN') {
             $validated['user_asalrs'] = 1;
         }

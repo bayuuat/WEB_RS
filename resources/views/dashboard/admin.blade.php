@@ -10,13 +10,17 @@ Dashboard
     <div class="card p-3">
         <div class="row">
             <div class="col-3">
-                <div class="card">
-                    <img src="https://images.pexels.com/photos/10033128/pexels-photo-10033128.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                        class="card-img-top" alt="...">
+                <div class="card profile">
+                    <a href="{{ route('edit-profile', auth()->user()->id) }}" class="img-profile">
+                        <div class="overlay">
+                            <div class="text">Edit Profile</div>
+                        </div>
+                        <img src="{{ Storage::url(auth()->user()->user_foto) }}">
+                    </a>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item text-center">{{auth()->user()->user_nama}}</li>
+                            <li class="list-group-item text-center">{{auth()->user()->roles}}</li>
                         </ul>
                     </div>
                 </div>

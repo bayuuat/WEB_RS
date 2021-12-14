@@ -17,6 +17,10 @@ Homepage
 @endif
 
 <div class="container mt-4">
+    <div class="map mb-3">
+        <iframe src="{{$item->rs_lokasi}}" width="100%" height="400" style="border:0;" allowfullscreen=""
+            loading="lazy"></iframe>
+    </div>
     <form method="POST" action="{{ route('pemesanan.store', $item->id) }}">
         @csrf
         <div class="form-group">

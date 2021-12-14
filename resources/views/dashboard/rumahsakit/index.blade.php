@@ -26,9 +26,9 @@ Homepage
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($items as $item)
+                        @foreach ($items as $key => $item)
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">{{$key+1}}</th>
                             <td>{{$item->rs_nama}}</td>
                             <td>{{$item->rs_kondisi}}</td>
                             <td>{{$item->rs_lokasi}}</td>

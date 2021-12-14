@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RumahSakit;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class homeController extends Controller
@@ -30,11 +31,13 @@ class homeController extends Controller
         ]);
     }
 
-    public function dashboardUser()
+    public function edit($id)
     {
-        $items = RumahSakit::all();
-        return view('dashboard.user', [
-            'items' => $items
+        $item = User::findOrFail($id);
+        $rs = RumahSakit::all();
+        return view('dashboard.editprofile', [
+            'item' => $item,
+            'rs' => $rs,
         ]);
     }
 }

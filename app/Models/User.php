@@ -27,6 +27,7 @@ class User extends Authenticatable
         'user_kode',
         'user_ttl',
         'user_telp',
+        'user_foto',
         'password',
     ];
 

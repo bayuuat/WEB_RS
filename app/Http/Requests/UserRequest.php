@@ -31,7 +31,8 @@ class UserRequest extends FormRequest
             'user_asalrs' => 'required|string',
             'user_kode' => 'string',
             'password' => 'confirmed',
-            'user_telp' => 'required'
+            'user_telp' => 'required',
+            'user_foto' => 'image',
         ];
     }
 }

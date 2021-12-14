@@ -72,7 +72,7 @@ Homepage
                 </div>
                 <div class="form-group">
                     <label for="nama">Image</label>
-                    <input type="file" class="form-control-file" name="foto" placeholder="Image">
+                    <input type="file" class="form-control-file" name="user_foto" placeholder="Image">
                 </div>
                 <button type="submit" class="btn btn-dark warna-merah btn-block">Simpan</button>
             </form>

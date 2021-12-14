@@ -22,9 +22,9 @@ Homepage
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($items as $item)
+                        @foreach ($items as $key => $item)
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">{{$key+1}}</th>
                             <td>{{$item->pemesanan_nama}}</td>
                             <td>{{$item->pemesanan_telp}}</td>
                             <td>{{$item->pemesanan_deskripsi}}</td>

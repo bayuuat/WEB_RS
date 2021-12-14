@@ -34,6 +34,7 @@ Route::prefix('dashboard')
     ->middleware('auth')
     ->group(function () {
         Route::get('/', [homeController::class, 'dashboard'])->name('dashboard');
+        Route::get('/edit-profile/{id}', [homeController::class, 'edit'])->name('edit-profile');
         Route::resource('user', 'UserController');
         Route::resource('rs', 'RumahSakitController');
         Route::resource('pesan', 'PemesananController');

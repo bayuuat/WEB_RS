@@ -6,7 +6,7 @@ Homepage
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container my-5">
     <table class="table">
         <thead>
             <tr>
@@ -17,26 +17,27 @@ Homepage
             </tr>
         </thead>
         <tbody>
-            @foreach ($items as $item)
+            @foreach ($items as $key => $item)
+            @php
+            $alat_tersedia = $alat_siap->where('rs_id',$item->id)->count();
+            @endphp
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{$key++}}</th>
                 <td>{{$item->rs_nama}}</td>
-                @if (($item->rs_kondisi) != 0)
-                <td>Penuh</td>
-                @else
-                <td>Tersedia</td>
-                @endif
-                <td>
-                    @if (($item->rs_kondisi) != 0)
-                    <a class="btn btn-secondary disabled">
-                        <i class="fas fa-pencil-alt"></i>
-                    </a>
+                @if (($item->rs_kondisi) != 0 || $alat_tersedia < 1) <td>Penuh</td>
                     @else
-                    <a href="{{ route('pemesanan', $item->id) }}" class="btn btn-info">
-                        <i class="fas fa-pencil-alt"></i>
-                    </a>
+                    <td>Tersedia</td>
                     @endif
-                </td>
+                    <td>
+                        @if (($item->rs_kondisi) != 0 || $alat_tersedia < 1) <a class="btn btn-secondary disabled">
+                            <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            @else
+                            <a href="{{ route('pemesanan', $item->id) }}" class="btn btn-info">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            @endif
+                    </td>
             </tr>
             @endforeach
         </tbody>

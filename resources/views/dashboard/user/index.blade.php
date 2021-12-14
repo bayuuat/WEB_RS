@@ -30,9 +30,9 @@ Homepage
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($items as $item)
+                        @foreach ($items as $key => $item)
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">{{$key+1}}</th>
                             <td>{{$item->user_nama}}</td>
                             <td>{{$item->user_email}}</td>
                             <td>{{$item->user_telp}}</td>
@@ -70,9 +70,9 @@ Homepage
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($items as $item)
+                        @foreach ($items as $key => $item)
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">{{$key+1}}</th>
                             <td>{{$item->user_kode}}</td>
                             <td>{{$item->user_nama}}</td>
                             <td>{{$item->user_email}}</td>

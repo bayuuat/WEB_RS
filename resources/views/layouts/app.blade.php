@@ -14,6 +14,7 @@
     @stack('prepend-style')
     @include ('includes.style')
     @stack('addon-style')
+    @stack('addon-script')
 
 </head>
 
@@ -30,7 +31,7 @@
     <!-- script -->
     @stack('prepend-script')
     @include ('includes.script')
-    @stack('addon-script')
+
 </body>
 
 </html>
