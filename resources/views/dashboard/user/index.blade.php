@@ -26,7 +26,7 @@ Homepage
                             <th scope="col">Asal R.S.</th>
                             <th scope="col">Kode</th>
                             <th scope="col">Roles</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" style="width: 80px">Action</th>
                         </tr>
                     </thead>
                     <tbody>

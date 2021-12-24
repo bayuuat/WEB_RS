@@ -32,38 +32,47 @@ Halaman Register
                     <form action="{{ route('registered') }}" method="post" class="mt-3">
                         @csrf
                         <div class="form-group">
-                            <input type="Name" placeholder="Nama Lengkap" class="form-control" name="user_nama" />
+                            <input type="Name" placeholder="Nama Lengkap" class="form-control" name="user_nama"
+                                value="{{ old('user_nama') }}" />
                         </div>
                         <label>Tempat Tanggal Lahir</label>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="address" placeholder="Tempat" class="form-control" name="user_email" />
+                                <input type="address" placeholder="Tempat" class="form-control" name="user_tempat"
+                                    value="{{ old('user_tempat') }}" />
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="date" placeholder="Birthdate" class="form-control" name="user_ttl" />
+                                <input type="date" placeholder="Birthdate" class="form-control" name="user_ttl"
+                                    value="{{ old('user_ttl') }}" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Alamat Email" class="form-control" name="user_email" />
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <input type="numberr" placeholder="Nomor Telepon" class="form-control"
-                                    name="user_telp" />
-                            </div>
+                            <input type="email" placeholder="Alamat Email" class="form-control" name="user_email"
+                                value="{{ old('user_email') }}" />
                         </div>
                         <div class="form-group">
-                            <input type="name" placeholder="Asal Rumah Sakit" class="form-control" name="user_asalrs" />
+                            <input type="number" placeholder="Nomor Telepon" class="form-control" name="user_telp"
+                                value="{{ old('user_telp') }}" />
                         </div>
                         <div class="form-group">
-                            <input type="id" placeholder="ID" class="form-control" name="user_kode" />
+                            <select name="user_asalrs" required class="form-control">
+                                <option value="">Pilih Asal RS</option>
+                                @foreach ($item as $list)
+                                <option value="{{ $list->id }}">{{ $list->rs_nama }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
-                            <input type="Password" placeholder="Password" class="form-control" name="user_password" />
+                            <input type="id" placeholder="ID" class="form-control" name="user_kode"
+                                value="{{ old('user_kode') }}" />
                         </div>
-                        {{-- <div class="form-group">
-                            <input type="Password" placeholder="Konfirmasi password" class="form-control" />
-                        </div> --}}
+                        <div class="form-group">
+                            <input type="Password" placeholder="Password" class="form-control" name="password" />
+                        </div>
+                        <div class="form-group">
+                            <input type="Password" placeholder="Confirm Password" class="form-control"
+                                name="password_confirmation" />
+                        </div>
                         <button type="submit" class="btn btn_warna btn-block mt-4">
                             Register
                         </button>

@@ -31,7 +31,9 @@ Homepage
                             <th scope="row">{{$key+1}}</th>
                             <td>{{$item->rs_nama}}</td>
                             <td>{{$item->rs_kondisi}}</td>
-                            <td>{{$item->rs_lokasi}}</td>
+                            <td
+                                style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">
+                                {{$item->rs_lokasi}}</td>
                             <td>
                                 <a href="{{ route('rs.edit', $item->id) }}" class="btn btn-info">
                                     <i class="fas fa-pencil-alt"></i>

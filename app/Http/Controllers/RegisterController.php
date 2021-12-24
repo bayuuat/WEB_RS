@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Models\RumahSakit;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,15 +11,16 @@ class RegisterController extends Controller
 {
     public function index()
     {
+        $items = RumahSakit::all()->where('id', '>', 1);
         return view('register.index', [
+            'item' => $items,
             'title' => 'Register'
         ]);
     }
 
 
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        $data = request()->all();
         $validateData = $request->validate([
             'user_nama' => 'required|string|max:50',
             'user_email' => 'required|email|unique:tbl_user',
@@ -27,20 +28,20 @@ class RegisterController extends Controller
             'roles' => 'string|in:ADMIN,USER',
             'user_asalrs' => 'required|string',
             'user_kode' => 'string|unique:tbl_user',
-            'user_password' => 'required|min:5|max:16',
-            'user_telp'=>'required'
+            'password' => 'required|min:5|max:16|confirmed',
+            'user_telp' => 'required',
+            'user_foto' => 'image',
         ]);
-        
-        $validateData['user_password'] = Hash::make($request->user_password);
-        $validateData['roles'] = 'ADMIN';
+
+        $validateData['password'] = Hash::make($request->password);
+        $validateData['roles'] = 'USER';
+        $validateData['user_foto'] = 'image/default.jpg';
 
         User::create($validateData);
 
         $request->session()->flash('success', 'Registration successfull! Please login');
 
-
-
-        // return redirect('/');
+        return redirect('/login');
     }
 
     // public function create()

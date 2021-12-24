@@ -30,9 +30,16 @@ Homepage
                             <td>{{$item->pemesanan_deskripsi}}</td>
                             <td>{{$item->rumahsakit->rs_nama}}</td>
                             <td>
-                                <a href="{{ route('user.edit', $item->id) }}" class="btn btn-info">
+                                <a href="{{ route('pesan.edit', $item->id) }}" class="btn btn-info">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
+                                <form action="{{ route('pesan.destroy', $item->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger">
+                                        <i class="fas fa-trash "></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

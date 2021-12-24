@@ -95,7 +95,13 @@ class PemesananController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Pemesanan::findOrFail($id);
+        $rs = RumahSakit::all();
+
+        return view('dashboard.pemesanan.edit', [
+            'item' => $item,
+            'rs' => $rs,
+        ]);
     }
 
     /**
@@ -105,9 +111,14 @@ class PemesananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PemesananRequest $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $item = Pemesanan::findOrFail($id);
+        $item->update($data);
+
+        return redirect()->route('pesan.index');
     }
 
     /**
@@ -118,6 +129,9 @@ class PemesananController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Pemesanan::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('pesan.index');
     }
 }
