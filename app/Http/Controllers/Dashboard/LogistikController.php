@@ -52,16 +52,30 @@ class LogistikController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'rs_id' => 'required',
-        ]);
+        $role = Auth::user()->roles;
 
-        $input = $request->all();
-        $input['alat_kondisi'] = 0;
+        if ($role == 'ADMIN') {
+            $request->validate([
+                'rs_id' => 'required',
+            ]);
 
-        $send = Logistik::create($input);
-        if ($send) {
-            return redirect()->route('logistik.index');
+            $input = $request->all();
+            $input['alat_kondisi'] = 0;
+
+            $send = Logistik::create($input);
+            if ($send) {
+                return redirect()->route('logistik.index');
+            }
+        }
+
+        if ($role == 'USER') {
+            $input['rs_id'] = Auth::user()->user_asalrs;
+            $input['alat_kondisi'] = 0;
+
+            $send = Logistik::create($input);
+            if ($send) {
+                return redirect()->route('logistik.index');
+            }
         }
     }
 
