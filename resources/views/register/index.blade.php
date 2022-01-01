@@ -63,7 +63,7 @@ Halaman Register
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="id" placeholder="ID" class="form-control" name="user_kode"
+                            <input type="number" placeholder="Kode" class="form-control" name="user_kode"
                                 value="{{ old('user_kode') }}" />
                         </div>
                         <div class="form-group">

@@ -27,7 +27,7 @@ class RegisterController extends Controller
             'user_ttl' => 'required|date',
             'roles' => 'string|in:ADMIN,USER',
             'user_asalrs' => 'required|string',
-            'user_kode' => 'string|unique:tbl_user',
+            'user_kode' => 'required|unique:tbl_user',
             'password' => 'required|min:5|max:16|confirmed',
             'user_telp' => 'required',
             'user_foto' => 'image',

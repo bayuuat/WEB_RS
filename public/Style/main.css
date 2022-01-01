@@ -123,6 +123,31 @@ footer p {
     text-align: center;
 }
 
+.phone {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .master {
+        display: none;
+    }
+    .phone {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #1f1d2b;
+        width: 100vw;
+        height: 100vh;
+        padding: 10px 20px;
+        text-align: center;
+    }
+    .phone p {
+        font-size: 14px;
+        color: #f1f0f2;
+    }
+}
+
 /* .nav-bar-text-decoration :hover {
     transform: scale(1.05);
     text-decoration: none;

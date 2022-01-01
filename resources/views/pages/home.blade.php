@@ -6,6 +6,7 @@ Homepage
 @endsection
 
 @section('content')
+
 <div class="container my-5">
     <table class="table">
         <thead>
@@ -44,3 +45,15 @@ Homepage
     </table>
 </div>
 @endsection
+
+@if (session()->has('success'))
+@push('addon-script')
+<script>
+    swal({
+        title: "Berhasil Mendaftar",
+        text: "{!! session('success') !!}",
+        icon: "success",
+    });
+</script>
+@endpush
+@endif

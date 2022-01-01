@@ -1,10 +1,10 @@
 <nav class="
-        navbar navbar-expand-lg navbar-light navbar-store sticky-top
+        navbar navbar-expand-md navbar-light navbar-store sticky-top
       ">
     <div class=" container">
-        <div class="nav-bar-text-decoration justify-content-center align-items-center">
-            <h3>Sistem Informasi Ketersediaan Ruang IGD </h3>
-        </div>
+        <a class="navbar-brand" href="/">
+            <h4> Sistem Informasi Ketersediaan Ruang IGD</h4>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,27 +12,27 @@
             <ul class="navbar-nav ml-auto">
 
                 @auth
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-expanded="false">
-                            Welcome back, {{ auth()->user()->user_nama }}
-                        </a>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-expanded="false">
+                        Welcome back, {{ auth()->user()->user_nama }}
+                    </a>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/dashboard">Dashboard</a>
 
-                            <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div>
 
-                            <form action="/logout" method="POST">
-                                @csrf
-                                <button type="submit" class="dropdown-item">Logout</button>
-                            </form>
-                            {{-- <a class="dropdown-item" href="#">Logout</a> --}}
-                        </div>
-                    </li>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item">Logout</button>
+                        </form>
+                        {{-- <a class="dropdown-item" href="#">Logout</a> --}}
+                    </div>
+                </li>
                 @else
 
-                    <a href="/login" class="nav-link btn btn_warna">Login</a>
+                <a href="/login" class="nav-link btn btn_warna">Login</a>
 
                 @endauth
                 </li>

@@ -68,7 +68,7 @@ class pemesananController extends Controller
 
         $send = Pemesanan::create($data);
         if ($send) {
-            return redirect('/');
+            return redirect('/')->with('success', 'Tunggu beberapa saat, pihak rumah sakit akan menghubungi!');
         }
     }
 

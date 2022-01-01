@@ -14,23 +14,31 @@
     @stack('prepend-style')
     @include ('includes.style')
     @stack('addon-style')
-    @stack('addon-script')
-
 </head>
 
 <body>
-    <!-- navbar -->
-    @include('includes.navbar')
 
-    <!-- page content -->
-    @yield('content')
+    <div class="master">
+        <!-- navbar -->
+        @include('includes.navbar')
 
-    <!-- footer -->
-    @include('includes.footer')
+        <!-- page content -->
+        @yield('content')
 
-    <!-- script -->
-    @stack('prepend-script')
-    @include ('includes.script')
+        <!-- footer -->
+        @include('includes.footer')
+
+        <!-- script -->
+        @stack('prepend-script')
+        @include ('includes.script')
+        @stack('addon-script')
+    </div>
+
+    <div class="phone">
+        <p>Kami menyarankan anda menggunakan desktop</p>
+        <img src="{{url('Images/phone.png')}}" alt="" class="my-5" />
+        <p>Terima Kasih!</p>
+    </div>
 
 </body>
 
