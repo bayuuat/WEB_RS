@@ -27,6 +27,7 @@ class RumahSakitRequest extends FormRequest
             'rs_nama' => 'required',
             'rs_kondisi' => '',
             'rs_lokasi' => 'required',
+            'rs_optimal' => 'nullable'
         ];
     }
 }

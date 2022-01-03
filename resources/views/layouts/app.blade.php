@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <link rel="icon" href="{{ url('favicon.ico') }}">
 
     <title>@yield('title')</title>
 
@@ -14,6 +15,7 @@
     @stack('prepend-style')
     @include ('includes.style')
     @stack('addon-style')
+    @stack('prepend-script')
 </head>
 
 <body>
@@ -29,7 +31,7 @@
         @include('includes.footer')
 
         <!-- script -->
-        @stack('prepend-script')
+
         @include ('includes.script')
         @stack('addon-script')
     </div>

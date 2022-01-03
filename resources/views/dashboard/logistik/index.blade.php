@@ -9,16 +9,23 @@ Homepage
 <div class="container mt-4">
     <div class="card shadow">
         <div class="card-body">
+            <a href="{{ route('optimasi') }}" class="btn btn-sm btn-success shadow-sm float-right mb-4 ml-3">
+                <i class="fas fa-plus fa-sm text-white-50 "></i> Optimasi Ruang
+            </a>
             @if (auth()->user()->roles == 'ADMIN')
             <a href="{{ route('logistik.create') }}" class="btn btn-sm btn-primary shadow-sm float-right mb-4">
-                <i class="fas fa-plus fa-sm text-white-50 "></i> Tambah Data
+                <i class="fas fa-plus fa-sm text-white-50 "></i> Tambah Alat
             </a>
             @else
+            <h6 class="btn btn-sm btn-secondary shadow-sm float-left mb-4 disabled">
+                Jumlah Optimal Ruangan = {{$rs->rs_optimal}}
+            </h6>
             <button type="button" class="btn btn-sm btn-primary shadow-sm float-right mb-4" data-toggle="modal"
                 data-target="#exampleModal">
-                <i class="fas fa-plus fa-sm text-white-50 "></i> Tambah Data
+                <i class="fas fa-plus fa-sm text-white-50 "></i> Tambah Alat
             </button>
             @endif
+
 
 
             <div class="table-responsive">
@@ -75,7 +82,7 @@ Homepage
                 <h5 class="text-center">
                     Apakah anda ingin menambah alat untuk
                 </h5>
-                <h5 class="text-center">{{$item->rumahsakit->rs_nama}}?</h5>
+                <h5 class="text-center">{{auth()->user()->rumahsakit->rs_nama}}?</h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>

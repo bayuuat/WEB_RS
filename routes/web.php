@@ -35,6 +35,8 @@ Route::prefix('dashboard')
     ->group(function () {
         Route::get('/', [homeController::class, 'dashboard'])->name('dashboard');
         Route::get('/edit-profile/{id}', [homeController::class, 'edit'])->name('edit-profile');
+        Route::get('/optimasi', [homeController::class, 'optimasi'])->name('optimasi');
+        Route::post('/optimasi/{id}', [homeController::class, 'updateOptimasi'])->name('update-optimasi');
         Route::resource('user', 'UserController');
         Route::resource('rs', 'RumahSakitController');
         Route::resource('pesan', 'PemesananController');

@@ -10,7 +10,7 @@ class RumahSakit extends Model
     // use HasFactory;
 
     protected $fillable = [
-        'rs_nama', 'rs_kondisi', 'rs_lokasi'
+        'rs_nama', 'rs_kondisi', 'rs_lokasi', 'rs_optimal'
     ];
 
     protected $hidden = [

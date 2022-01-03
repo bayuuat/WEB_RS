@@ -89,7 +89,7 @@ class RumahSakitController extends Controller
     {
         $data = $request->all();
 
-        $item = User::findOrFail($id);
+        $item = RumahSakit::findOrFail($id);
         $item->update($data);
 
         return redirect()->route('rs.index');

@@ -24,9 +24,11 @@ class LogistikController extends Controller
         } else if ($role == 'USER') {
             $asalrs = Auth::user()->user_asalrs;
             $items = Logistik::with(['rumahsakit'])->where('rs_id', '=', $asalrs)->get();
+            $rs = RumahSakit::where('id', $asalrs)->first();
         }
         return view('dashboard.logistik.index', [
-            'items' => $items
+            'items' => $items,
+            'rs' => $rs
         ]);
     }
 
