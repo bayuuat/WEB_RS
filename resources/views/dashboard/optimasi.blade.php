@@ -15,7 +15,7 @@ Dashboard
 		var lp_demo_mode="decimal";
 		var lp_demo_verboseLevel=lp_verbosity_none;
 		
-		function showSolution( str ) {
+		function showSolution( str, luas ) {
             var Arr = str.split(';');
             
             var p = Arr[0].split(' ');
@@ -23,12 +23,28 @@ Dashboard
             var xy = Arr[1].split(',');
             var x = xy[0].split(' ');
             x = x[3];
+            x = parseInt(x);
             var y = xy[1].split(' ');
             y = y[3];
+            y = parseInt(y);
+
+            //var d = ((12*x+y)-((12*x+y)-luas))/13;
+            luas = parseInt(luas);
+            var d = luas/13;
+            d = Math.floor(d);
+            var minimum = Math.min(x,y,d);
+            var cekNilai = 12*parseInt(kasur)+ parseInt(alat);
             
-            if (x == y){p = p/2}
-            else if (x > y){p = y}
-            else if (x < y){p = x}
+            console.log(d);
+
+            if(cekNilai <= luas){
+                if (x == y){p = p/2}
+                else if (x > y){p = y}
+                else if (x < y){p = x}
+            } else {
+                if (x == y) {p = d}
+                else {p = minimum }
+            }
 
 			document.getElementById("solutionout").innerHTML = str;
 			document.getElementById("solusikondisi").innerHTML = `p = ${p}`;
@@ -69,7 +85,7 @@ Dashboard
                     </div>
                 </div>
                 <div class="col-auto form-group">
-                    <label for="inputZip">Jumlah kasur</label>
+                    <label for="inputZip">Jumlah tempat tidur</label>
                     <div class="input-group mb-2">
                         <input type="number" class="form-control" id="kasur">
                         <div class="input-group-prepend">
@@ -137,14 +153,14 @@ Dashboard
         var kasur = document.getElementById("kasur").value;
         var alat = document.getElementById("alat").value;
 
-        var coba = `Maximize p = x + y subject to \n12x + y <= ${lebar} \nx <= ${kasur} \ny <= ${alat} \nx >= 0 \n y >= 0`
+        var coba = `Maximize p = x + y subject to \n12x + y <= ${lebar} \nx <= ${kasur} \ny <= ${alat} \nx >= 0 \n y >= 0 \ninteger x, y`
 
         var Q = new lpProblem( coba );
         lp_verboseLevel=lp_demo_verboseLevel;
         Q.mode=lp_demo_mode;
         Q.sigDigits=lp_demo_accuracy;
         try{Q.solve()}
-        finally{showSolution( Q.solutionToString() );}
+        finally{showSolution( Q.solutionToString(), lebar );}
     }
 </script>
 @endpush

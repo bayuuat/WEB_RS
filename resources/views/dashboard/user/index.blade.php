@@ -24,7 +24,7 @@ Homepage
                             <th scope="col">Email</th>
                             <th scope="col">Telephone</th>
                             <th scope="col">Asal R.S.</th>
-                            <th scope="col">Kode</th>
+                            <th scope="col">NIK</th>
                             <th scope="col">Roles</th>
                             <th scope="col" style="width: 80px">Action</th>
                         </tr>
@@ -62,7 +62,7 @@ Homepage
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Kode</th>
+                            <th scope="col">NIK</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
                             <th scope="col">Telephone</th>

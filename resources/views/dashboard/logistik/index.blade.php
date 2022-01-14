@@ -9,16 +9,17 @@ Homepage
 <div class="container mt-4">
     <div class="card shadow">
         <div class="card-body">
-            <a href="{{ route('optimasi') }}" class="btn btn-sm btn-success shadow-sm float-right mb-4 ml-3">
-                <i class="fas fa-plus fa-sm text-white-50 "></i> Optimasi Ruang
-            </a>
+
             @if (auth()->user()->roles == 'ADMIN')
             <a href="{{ route('logistik.create') }}" class="btn btn-sm btn-primary shadow-sm float-right mb-4">
                 <i class="fas fa-plus fa-sm text-white-50 "></i> Tambah Alat
             </a>
             @else
+            <a href="{{ route('optimasi') }}" class="btn btn-sm btn-success shadow-sm float-right mb-4 ml-3">
+                <i class="fas fa-plus fa-sm text-white-50 "></i> Optimasi Ruang
+            </a>
             <h6 class="btn btn-sm btn-secondary shadow-sm float-left mb-4 disabled">
-                Jumlah Optimal Ruangan = {{$rs->rs_optimal}}
+                Jumlah Optimal Tempat Tidur = {{$rs->rs_optimal}}
             </h6>
             <button type="button" class="btn btn-sm btn-primary shadow-sm float-right mb-4" data-toggle="modal"
                 data-target="#exampleModal">
@@ -47,9 +48,6 @@ Homepage
                             <td>{{$item->rumahsakit->rs_nama}}</td>
                             <td>{{$item->alat_kondisi}}</td>
                             <td>
-                                <a href="{{ route('logistik.edit', $item->id) }}" class="btn btn-info">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </a>
                                 <form action="{{ route('logistik.destroy', $item->id) }}" method="POST"
                                     class="d-inline">
                                     @csrf

@@ -60,7 +60,7 @@ Dashboard
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="id" placeholder="ID" class="form-control" name="user_kode"
+                        <input type="id" placeholder="NIK" class="form-control" name="user_kode"
                             value="{{ $item->user_kode }}" />
                     </div>
                     <div class="form-group">

@@ -8,6 +8,7 @@ use App\Models\Logistik;
 use App\Models\Pemesanan;
 use App\Models\RumahSakit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class pemesananController extends Controller
 {
@@ -18,6 +19,7 @@ class pemesananController extends Controller
      */
     public function index()
     {
+
         $items = RumahSakit::all()->where('id', '>', 1);
         $alat_tersedia = Logistik::all()->where('alat_kondisi', '=', 0);
 

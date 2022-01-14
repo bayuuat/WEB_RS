@@ -20,6 +20,8 @@
 
 <body>
 
+    @yield('loader')
+
     <div class="master">
         <!-- navbar -->
         @include('includes.navbar')

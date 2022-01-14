@@ -36,7 +36,7 @@ Homepage
             <input type="text" class="form-control" placeholder="" name="pemesanan_telp">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Deskripsi</label>
+            <label for="exampleFormControlTextarea1">Deskripsi kondisi darurat anda</label>
             <textarea class="form-control" rows="3" name="pemesanan_deskripsi"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

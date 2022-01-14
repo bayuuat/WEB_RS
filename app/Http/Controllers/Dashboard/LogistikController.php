@@ -21,6 +21,7 @@ class LogistikController extends Controller
 
         if ($role == 'ADMIN') {
             $items = Logistik::with(['rumahsakit'])->get();
+            $rs = null;
         } else if ($role == 'USER') {
             $asalrs = Auth::user()->user_asalrs;
             $items = Logistik::with(['rumahsakit'])->where('rs_id', '=', $asalrs)->get();

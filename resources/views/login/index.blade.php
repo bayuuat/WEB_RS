@@ -10,7 +10,7 @@ Halaman Login
     <div class="container">
         <h3 class="mb-0 title mt-2"><u>Sistem Informasi Ketersediaan Ruang IGD</u></h3>
         <h4 class="mt-3">
-            HALAMAN LOGIN
+            PORTAL ADMINISTRASI RUMAH SAKIT
         </h4>
     </div>
 </div>

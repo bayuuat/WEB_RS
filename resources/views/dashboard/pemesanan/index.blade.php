@@ -9,6 +9,12 @@ Homepage
 <div class="container mt-4">
     <div class="card shadow">
         <div class="card-body">
+            @if (auth()->user()->roles == 'USER')
+            <h6 class="btn btn-sm btn-secondary shadow-sm float-left mb-4 disabled">
+                Jumlah Optimal Tempat Tidur = {{$rs->rs_optimal}}
+            </h6>
+            @endif
+
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
