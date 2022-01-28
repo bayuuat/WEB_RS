@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\RumahSakit;
 use App\Models\User;
+use App\Models\Activity;
 use Illuminate\Support\Facades\Hash;
 use illuminate\support\facades\Auth;
 use Illuminate\Http\Request;
@@ -31,6 +32,21 @@ class UserController extends Controller
         return view('dashboard.user.index', [
             'items' => $items
         ]);
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function activity()
+    {
+        $users = Activity::with(['user'])->orderBy('time','desc')->get();
+        return view('dashboard.user.activity', [
+            'users' => $users
+        ]);
+
     }
 
     /**

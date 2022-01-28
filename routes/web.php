@@ -5,7 +5,9 @@ use App\Http\Controllers\pemesananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Controller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,7 @@ Route::prefix('dashboard')
     ->middleware('auth')
     ->group(function () {
         Route::get('/', [homeController::class, 'dashboard'])->name('dashboard');
+        Route::get('/activity', [UserController::class, 'activity'])->name('user.activity');
         Route::get('/edit-profile/{id}', [homeController::class, 'edit'])->name('edit-profile');
         Route::get('/optimasi', [homeController::class, 'optimasi'])->name('optimasi');
         Route::post('/optimasi/{id}', [homeController::class, 'updateOptimasi'])->name('update-optimasi');

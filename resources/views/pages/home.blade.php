@@ -9,7 +9,7 @@ Homepage
     .loader {
         width: 100vw;
         height: 100vh;
-        background-color: #8ac7ec;
+        background-color: whitesmoke;
         position: fixed;
         display: flex;
         z-index: 100;
@@ -21,7 +21,7 @@ Homepage
         width: 50px;
         height: 50px;
         border: 5px solid;
-        color: whitesmoke;
+        color: #8ac7ec;
         border-radius: 50%;
         border-top-color: transparent;
         animation: loading 1.2s linear infinite;
@@ -29,15 +29,15 @@ Homepage
 
     @keyframes loading {
         25% {
-            color: whitesmoke;
+            color: #8ac7ec;
         }
 
         50% {
-            color: whitesmoke;
+            color: #8ac7ec;
         }
 
         75% {
-            color: whitesmoke;
+            color: #8ac7ec;
         }
 
         to {
@@ -117,9 +117,6 @@ Homepage
                         }
                     } 
                 }
-            },
-            error: function(){
-                alert("failure From php side!!! ");
             }
         });
     }

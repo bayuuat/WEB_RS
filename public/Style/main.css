@@ -148,6 +148,21 @@ footer p {
     }
 }
 
+/* ACTIVITY PAGE */
+.bluetext {
+    color: #1597e5;
+}
+
+.roundedpill {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.whitefont {
+    color: white;
+}
+
 /* .nav-bar-text-decoration :hover {
     transform: scale(1.05);
     text-decoration: none;
